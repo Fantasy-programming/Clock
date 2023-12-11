@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { DateContextProvider } from "./global/dateContext";
 
 import SideBar from "./components/SideBar";
 import Timecadrant from "./components/TimeCadrant";
+import AppWrapper from "./components/Wrapper";
+
 import "./App.css";
 
 function App() {
@@ -13,10 +14,10 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <DateContextProvider>
-          <div className="flex flex-col lg:flex-row h-full font-barlow-condensed">
+          <AppWrapper>
             <Timecadrant />
             <SideBar />
-          </div>
+          </AppWrapper>
         </DateContextProvider>
       </QueryClientProvider>
     </>

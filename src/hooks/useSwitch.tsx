@@ -1,46 +1,41 @@
 import { useState } from "react";
 
 const useSwitch = (date: Date) => {
-  const [activeSwitch, setActiveSwitch] = useState({
+  type ActiveSwitchKey = "day" | "month" | "year";
+  type ActiveSwitch = {
+    day: number;
+    month: number;
+    year: number;
+  };
+
+  const [activeSwitch, setActiveSwitch] = useState<ActiveSwitch>({
     day: 1,
     month: 0,
     year: -1,
   });
 
   const tabs = ["day", "month", "year"];
-  const months = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
+  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
   const map = {
-    month: months[date.getMonth()], // Get the month and convert it to the desired format
-    day: date.getDate().toString().padStart(2, "0"), // Get day and pad with zero if needed
-    year: date.getFullYear().toString(), // Get year as a string
+    month: months[date.getMonth()],
+    day: date.getDate().toString().padStart(2, "0"),
+    year: date.getFullYear().toString(),
   };
 
   const handleClick = (key: string) => {
     const newSwitch = { ...activeSwitch };
+    if (!isKeyOfActiveSwitch(key)) return;
 
     if (activeSwitch[key] === -1) {
-      const zeroKey = Object.keys(newSwitch).find((k) => newSwitch[k] === 0);
+      const zeroKey = findKeyWithZeroValue(newSwitch);
       if (zeroKey) {
         newSwitch[zeroKey] = -1;
       }
       newSwitch[key] = 0;
       setActiveSwitch(newSwitch);
     } else if (activeSwitch[key] === 1) {
-      const zeroKey = Object.keys(newSwitch).find((k) => newSwitch[k] === 0);
+      const zeroKey = findKeyWithZeroValue(newSwitch);
       if (zeroKey) {
         newSwitch[zeroKey] = 1;
       }
@@ -49,12 +44,24 @@ const useSwitch = (date: Date) => {
     }
   };
 
-  const getCurrentZeroValueKey = () => {
-    return Object.keys(activeSwitch).find((key) => activeSwitch[key] === 0);
+  const isKeyOfActiveSwitch = (key: string): key is ActiveSwitchKey => {
+    return ["day", "month", "year"].includes(key);
+  };
+
+  const findKeyWithZeroValue = (newSwitch: ActiveSwitch): ActiveSwitchKey | undefined => {
+    return (Object.keys(newSwitch) as ActiveSwitchKey[]).find((k) => newSwitch[k] === 0);
+  };
+
+  const getCurrentZeroValueKey = (): ActiveSwitchKey | undefined => {
+    const key = Object.keys(activeSwitch).find(
+      (key: string) => isKeyOfActiveSwitch(key) && activeSwitch[key as ActiveSwitchKey] === 0
+    );
+    return key as ActiveSwitchKey;
   };
 
   const renderButtons = () => {
     return tabs.map((key) => {
+      if (!isKeyOfActiveSwitch(key)) return null;
       const number = activeSwitch[key];
 
       switch (number) {
@@ -71,20 +78,12 @@ const useSwitch = (date: Date) => {
         case 0:
           return (
             <div className="font-abril text-[11rem]" key={key}>
-              {key === "year" ? (
-                <span className="text-[10rem]">{map[key]}</span>
-              ) : (
-                map[key]
-              )}
+              {key === "year" ? <span className="text-[10rem]">{map[key]}</span> : map[key]}
             </div>
           );
         case 1:
           return (
-            <button
-              className="absolute top-8 left-8 text-2xl font-medium"
-              onClick={() => handleClick(key)}
-              key={key}
-            >
+            <button className="absolute top-8 left-8 text-2xl font-medium" onClick={() => handleClick(key)} key={key}>
               {map[key]}
             </button>
           );

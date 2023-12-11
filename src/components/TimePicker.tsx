@@ -1,27 +1,20 @@
+import { useContext } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+
 import Arrow from "../assets/arrow-up.svg?react";
 import useSwitch from "../hooks/useSwitch";
-import { useContext } from "react";
 import DateContext from "../global/dateContext";
-
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const TimePicker = () => {
   const [date, dateDispatch] = useContext(DateContext);
   const { getCurrentZeroValueKey, renderButtons } = useSwitch(date);
-  const [parent, enableAnimations] = useAutoAnimate();
+  const [parent] = useAutoAnimate();
 
   const handleClick = (key: string) => {
     const current = getCurrentZeroValueKey();
-    switch (key) {
-      case "Increment":
-        dateDispatch({ type: `INCREMENT_${current.toUpperCase()}` });
-        break;
-      case "Decrement":
-        dateDispatch({ type: `DECREMENT_${current.toUpperCase()}` });
-        break;
-      default:
-        return null;
-    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const actionType = `${key.toUpperCase()}_${current?.toLocaleUpperCase()}` as any;
+    dateDispatch({ type: actionType });
   };
 
   return (

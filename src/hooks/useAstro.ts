@@ -5,31 +5,58 @@ import Taurus from "../assets/taurus.svg?react";
 import Leo from "../assets/leo.svg?react";
 import Cancer from "../assets/cancer.svg?react";
 import Gemini from "../assets/gemini.svg?react";
-import Balance from "../assets/balance.svg?react";
+import Libra from "../assets/balance.svg?react";
 import Capricorn from "../assets/capricorn.svg?react";
 import Sagittarius from "../assets/sagittarius.svg?react";
 
-const signsIcon = {
+type ZodiacSign =
+  | "Capricorn"
+  | "Aquarius"
+  | "Pisces"
+  | "Aries"
+  | "Taurus"
+  | "Gemini"
+  | "Cancer"
+  | "Leo"
+  | "Virgo"
+  | "Libra"
+  | "Scorpio"
+  | "Sagittarius"
+  | "CapricornEnd";
+
+type ZodiacData = {
+  [key in ZodiacSign]: {
+    month: number;
+    day: number;
+  };
+};
+
+type SignsIcon = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+};
+
+const signsIcon: SignsIcon = {
   Aquarius: Aquarius,
   Scorpio: Aquarius,
   Pisces: Aquarius,
   Aries: Aquarius,
   Virgo: Virgo,
   Taurus: Taurus,
-  Libra: Aquarius,
+  Libra: Libra,
   Leo: Leo,
   Cancer: Cancer,
   Gemini: Gemini,
-  Balance: Balance,
   Capricorn: Capricorn,
   Sagittarius: Sagittarius,
+  CapricornEnd: Capricorn,
 };
 
 const useAstro = (dateObj: Date) => {
   const [astrologicalSign, setAstrologicalSign] = useState("");
 
   useEffect(() => {
-    const zodiacData = {
+    const zodiacData: ZodiacData = {
       Capricorn: { month: 12, day: 22 },
       Aquarius: { month: 1, day: 20 },
       Pisces: { month: 2, day: 19 },
@@ -45,8 +72,8 @@ const useAstro = (dateObj: Date) => {
       CapricornEnd: { month: 12, day: 31 }, // Extra day for the loop
     };
 
-    const getAstrologicalSign = (month, day) => {
-      const signs = Object.keys(zodiacData);
+    const getAstrologicalSign = (month: number, day: number) => {
+      const signs = Object.keys(zodiacData) as ZodiacSign[];
 
       for (let i = 0; i < signs.length - 1; i++) {
         const sign = signs[i];
@@ -55,10 +82,7 @@ const useAstro = (dateObj: Date) => {
         const { month: signMonth, day: signDay } = zodiacData[sign];
         const { month: nextMonth, day: nextDay } = zodiacData[nextSign];
 
-        if (
-          (month === signMonth - 1 && day >= signDay) ||
-          (month === nextMonth - 1 && day < nextDay)
-        ) {
+        if ((month === signMonth - 1 && day >= signDay) || (month === nextMonth - 1 && day < nextDay)) {
           return sign;
         }
       }
@@ -66,7 +90,7 @@ const useAstro = (dateObj: Date) => {
       return signs[0]; // Default to Capricorn if date does not fit in any range
     };
 
-    const month = dateObj.getMonth(); // Month is 0-indexed
+    const month = dateObj.getMonth();
     const day = dateObj.getDate();
 
     const sign = getAstrologicalSign(month, day);

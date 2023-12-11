@@ -13,7 +13,7 @@ function SideBar() {
       <Hours />
       <InfoHeader text="holiday" />
       <Items />
-      <InfoHeader text="national day calendar" date={true} />
+      <InfoHeader text="national day calendar" />
       <Items />
       <InfoHeader text="this day in history" />
       <Highlight />
