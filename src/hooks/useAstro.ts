@@ -1,61 +1,79 @@
 import { useState, useEffect } from "react";
+import Aquarius from "../assets/aquarius.svg?react";
+import Virgo from "../assets/virgo.svg?react";
+import Taurus from "../assets/taurus.svg?react";
+import Leo from "../assets/leo.svg?react";
+import Cancer from "../assets/cancer.svg?react";
+import Gemini from "../assets/gemini.svg?react";
+import Balance from "../assets/balance.svg?react";
+import Capricorn from "../assets/capricorn.svg?react";
+import Sagittarius from "../assets/sagittarius.svg?react";
 
-const useAstro = (dateObj) => {
+const signsIcon = {
+  Aquarius: Aquarius,
+  Scorpio: Aquarius,
+  Pisces: Aquarius,
+  Aries: Aquarius,
+  Virgo: Virgo,
+  Taurus: Taurus,
+  Libra: Aquarius,
+  Leo: Leo,
+  Cancer: Cancer,
+  Gemini: Gemini,
+  Balance: Balance,
+  Capricorn: Capricorn,
+  Sagittarius: Sagittarius,
+};
+
+const useAstro = (dateObj: Date) => {
   const [astrologicalSign, setAstrologicalSign] = useState("");
 
   useEffect(() => {
+    const zodiacData = {
+      Capricorn: { month: 12, day: 22 },
+      Aquarius: { month: 1, day: 20 },
+      Pisces: { month: 2, day: 19 },
+      Aries: { month: 3, day: 21 },
+      Taurus: { month: 4, day: 20 },
+      Gemini: { month: 5, day: 21 },
+      Cancer: { month: 6, day: 21 },
+      Leo: { month: 7, day: 23 },
+      Virgo: { month: 8, day: 23 },
+      Libra: { month: 9, day: 23 },
+      Scorpio: { month: 10, day: 23 },
+      Sagittarius: { month: 11, day: 22 },
+      CapricornEnd: { month: 12, day: 31 }, // Extra day for the loop
+    };
+
     const getAstrologicalSign = (month, day) => {
-      const signs = [
-        "Capricorn",
-        "Aquarius",
-        "Pisces",
-        "Aries",
-        "Taurus",
-        "Gemini",
-        "Cancer",
-        "Leo",
-        "Virgo",
-        "Libra",
-        "Scorpio",
-        "Sagittarius",
-      ];
+      const signs = Object.keys(zodiacData);
 
-      const cutoffs = [
-        [1, 20], // Aquarius starts from January 20
-        [2, 19], // Pisces starts from February 19
-        [3, 21], // Aries starts from March 21
-        [4, 20], // Taurus starts from April 20
-        [5, 21], // Gemini starts from May 21
-        [6, 21], // Cancer starts from June 21
-        [7, 23], // Leo starts from July 23
-        [8, 23], // Virgo starts from August 23
-        [9, 23], // Libra starts from September 23
-        [10, 23], // Scorpio starts from October 23
-        [11, 22], // Sagittarius starts from November 22
-        [12, 22], // Capricorn starts from December 22
-      ];
+      for (let i = 0; i < signs.length - 1; i++) {
+        const sign = signs[i];
+        const nextSign = signs[i + 1];
 
-      for (let i = 0; i < cutoffs.length; i++) {
-        const [signMonth, signDay] = cutoffs[i];
+        const { month: signMonth, day: signDay } = zodiacData[sign];
+        const { month: nextMonth, day: nextDay } = zodiacData[nextSign];
+
         if (
-          (month === signMonth && day >= signDay) ||
-          (month === signMonth + 1 && day < signDay)
+          (month === signMonth - 1 && day >= signDay) ||
+          (month === nextMonth - 1 && day < nextDay)
         ) {
-          return signs[i];
+          return sign;
         }
       }
 
       return signs[0]; // Default to Capricorn if date does not fit in any range
     };
 
-    const month = dateObj.getMonth() + 1; // Month is 0-indexed
+    const month = dateObj.getMonth(); // Month is 0-indexed
     const day = dateObj.getDate();
 
     const sign = getAstrologicalSign(month, day);
     setAstrologicalSign(sign);
   }, [dateObj]);
 
-  return astrologicalSign;
+  return [astrologicalSign, signsIcon[astrologicalSign]];
 };
 
 export default useAstro;

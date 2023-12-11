@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useSwitch = () => {
+const useSwitch = (date: Date) => {
   const [activeSwitch, setActiveSwitch] = useState({
     day: 1,
     month: 0,
@@ -8,11 +8,25 @@ const useSwitch = () => {
   });
 
   const tabs = ["day", "month", "year"];
+  const months = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
 
   const map = {
-    month: "JAN",
-    day: "01",
-    year: "2019",
+    month: months[date.getMonth()], // Get the month and convert it to the desired format
+    day: date.getDate().toString().padStart(2, "0"), // Get day and pad with zero if needed
+    year: date.getFullYear().toString(), // Get year as a string
   };
 
   const handleClick = (key: string) => {
@@ -35,6 +49,10 @@ const useSwitch = () => {
     }
   };
 
+  const getCurrentZeroValueKey = () => {
+    return Object.keys(activeSwitch).find((key) => activeSwitch[key] === 0);
+  };
+
   const renderButtons = () => {
     return tabs.map((key) => {
       const number = activeSwitch[key];
@@ -51,7 +69,6 @@ const useSwitch = () => {
             </button>
           );
         case 0:
-          console.log(key);
           return (
             <div className="font-abril text-[11rem]" key={key}>
               {key === "year" ? (
@@ -77,7 +94,7 @@ const useSwitch = () => {
     });
   };
 
-  return { activeSwitch, renderButtons };
+  return { getCurrentZeroValueKey, renderButtons };
 };
 
 export default useSwitch;

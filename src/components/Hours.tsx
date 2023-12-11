@@ -1,4 +1,9 @@
-const Hours = ({ date }) => {
+import { useContext } from "react";
+
+import DateContext from "../global/dateContext";
+
+const Hours = () => {
+  const [date] = useContext(DateContext);
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();

@@ -5,12 +5,12 @@ import Items from "./Items";
 import Socials from "./Socials";
 import InfoHeader from "./InfoHeader";
 
-function SideBar({ time }) {
+function SideBar() {
   return (
     <div className="lg:w-[430px] flex flex-col w-full h-full bg-secondary px-8">
       <Socials />
-      <Astrology date={time} />
-      <Hours date={time} />
+      <Astrology />
+      <Hours />
       <InfoHeader text="holiday" />
       <Items />
       <InfoHeader text="national day calendar" date={true} />
