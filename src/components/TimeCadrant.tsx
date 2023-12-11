@@ -1,12 +1,14 @@
 import Navbar from "./Navbar";
 import TimePicker from "./TimePicker";
+import TimeWheel from "./TimeWheel";
 
 function TimeCadrant() {
   return (
     <div className="w-full">
       <Navbar />
-      <div className="px-40 tracking-widest py-3">
+      <div className="lg:px-44 px-20 relative flex justify-center lg:block tracking-widest py-3">
         <TimePicker />
+        <TimeWheel />
       </div>
     </div>
   );
