@@ -14,9 +14,9 @@ function Astrology({ date }) {
   const sign = useAstro(date);
 
   return (
-    <div className="flex px-4 order-2 lg:order-first py-8 items-center justify-center lg:justify-start gap-10">
+    <div className="flex px-3 order-2 lg:order-first pt-2  items-center justify-center lg:justify-start gap-8">
       <div className="rounded-full p-2 border-2 border-tertiary ">
-        <Aquarius width="40px" height="40px" />
+        <Aquarius width="25px" height="25px" />
       </div>
       <p className="uppercase font-medium">capricorn</p>
     </div>

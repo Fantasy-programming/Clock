@@ -6,17 +6,19 @@ const Hours = ({ date }) => {
   const hours12 = hours % 12 || 12;
 
   return (
-    <div className="flex gap-4 pb-8 order-1 items-center justify-center lg:justify-start">
-      <span className="text-8xl">{hours12}</span>
-      <div className="flex border-b-2 border-b-tertiary">
-        <div className="grid border-r border-r-tertiary  p-4 pt-0 pb-8">
-          <span className="text-xl">{minutes}</span>
-        </div>
-        <div className="grid  p-4 pt-0">
-          <span className="text-xl">{seconds}</span>
-        </div>
-        <div className="grid  border-l  border-l-tertiary justify-center p-4 pt-0 ">
-          <span className="text-xl">{ampm}</span>
+    <div className="flex gap-5 order-1  justify-center lg:justify-start">
+      <span className="text-[5.5rem]">10</span>
+      <div className="pb-8 pt-8 w-full">
+        <div className="flex h-full border-b-[3px] border-b-tertiary w-full">
+          <div className="grid border-r-2 justify-center  border-r-tertiary w-1/3 ">
+            <span className="text-3xl">00</span>
+          </div>
+          <div className="grid justify-center w-1/3">
+            <span className="text-3xl">23</span>
+          </div>
+          <div className="grid  border-l-2  border-l-tertiary justify-center  w-1/3 ">
+            <span className="text-3xl">AM</span>
+          </div>
         </div>
       </div>
     </div>

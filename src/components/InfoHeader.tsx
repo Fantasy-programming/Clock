@@ -1,6 +1,6 @@
 function InfoHeader({ text }) {
   return (
-    <div className=" uppercase order-3 border-b-2 border-b-tertiary p-1 mb-3">
+    <div className=" text-xl uppercase order-3 border-b-2 border-b-tertiary py-2 ">
       {text}
     </div>
   );

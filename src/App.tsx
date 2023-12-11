@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row h-full">
+      <div className="flex flex-col lg:flex-row h-full font-barlow-condensed">
         <Timecadrant time={time} />
         <SideBar time={time} />
       </div>
