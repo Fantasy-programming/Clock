@@ -5,11 +5,14 @@ import DateContext from "../global/dateContext";
 function Astrology() {
   const [date] = useContext(DateContext);
   const [sign, Icon] = useAstro(date);
-  console.log(sign, Icon);
-
+  if (!sign || !Icon) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="flex px-3 order-2 lg:order-first pt-2  items-center justify-center lg:justify-start gap-8">
-      <div className="rounded-full p-2 border-2 border-tertiary ">{/* <Icon width="25px" height="25px" /> */}</div>
+      <div className="rounded-full p-2 border-2 border-tertiary ">
+        <Icon width="25px" height="25px" />
+      </div>
       <p className="uppercase font-medium">{sign}</p>
     </div>
   );

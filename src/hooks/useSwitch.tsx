@@ -15,7 +15,20 @@ const useSwitch = (date: Date) => {
   });
 
   const tabs = ["day", "month", "year"];
-  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const months = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
 
   const map = {
     month: months[date.getMonth()],
@@ -48,13 +61,18 @@ const useSwitch = (date: Date) => {
     return ["day", "month", "year"].includes(key);
   };
 
-  const findKeyWithZeroValue = (newSwitch: ActiveSwitch): ActiveSwitchKey | undefined => {
-    return (Object.keys(newSwitch) as ActiveSwitchKey[]).find((k) => newSwitch[k] === 0);
+  const findKeyWithZeroValue = (
+    newSwitch: ActiveSwitch,
+  ): ActiveSwitchKey | undefined => {
+    return (Object.keys(newSwitch) as ActiveSwitchKey[]).find(
+      (k) => newSwitch[k] === 0,
+    );
   };
 
   const getCurrentZeroValueKey = (): ActiveSwitchKey | undefined => {
     const key = Object.keys(activeSwitch).find(
-      (key: string) => isKeyOfActiveSwitch(key) && activeSwitch[key as ActiveSwitchKey] === 0
+      (key: string) =>
+        isKeyOfActiveSwitch(key) && activeSwitch[key as ActiveSwitchKey] === 0,
     );
     return key as ActiveSwitchKey;
   };
@@ -78,12 +96,20 @@ const useSwitch = (date: Date) => {
         case 0:
           return (
             <div className="font-abril text-[11rem]" key={key}>
-              {key === "year" ? <span className="text-[10rem]">{map[key]}</span> : map[key]}
+              {key !== "day" ? (
+                <span className=" text-[8rem] lg:text-[10rem]">{map[key]}</span>
+              ) : (
+                map[key]
+              )}
             </div>
           );
         case 1:
           return (
-            <button className="absolute top-8 left-8 text-2xl font-medium" onClick={() => handleClick(key)} key={key}>
+            <button
+              className="absolute top-8 left-8 text-2xl font-medium"
+              onClick={() => handleClick(key)}
+              key={key}
+            >
               {map[key]}
             </button>
           );
