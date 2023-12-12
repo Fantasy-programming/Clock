@@ -5,9 +5,15 @@ import Facebook from "../assets/facebook.svg?react";
 function Socials() {
   return (
     <div className="flex order-last justify-center items-center lg:order-first lg:justify-end gap-8 py-8">
-      <Facebook width="18px" height="18px" />
-      <Twitter width="25px" height="25px" />
-      <Github width="22px" height="22px" />
+      <a href="https://twitter.com/ridyrich">
+        <Facebook width="18px" height="18px" />
+      </a>
+      <a href="https://twitter.com/ridyrich">
+        <Twitter width="25px" height="25px" />
+      </a>
+      <a href="https://github.com/Fantasy-programming">
+        <Github width="22px" height="22px" />
+      </a>
     </div>
   );
 }

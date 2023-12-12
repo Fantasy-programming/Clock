@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from "react";
 
 type Action =
+  | { type: "INCREMENT_SECOND" }
+  | { type: "DECREMENT_SECOND" }
   | { type: "INCREMENT_DAY" }
   | { type: "DECREMENT_DAY" }
   | { type: "INCREMENT_MONTH" }
@@ -12,6 +14,10 @@ type DateDispatch = React.Dispatch<Action>;
 
 const dateReducer = (state: Date, action: Action) => {
   switch (action.type) {
+    case "INCREMENT_SECOND":
+      return new Date(state.getTime() + 1000);
+    case "DECREMENT_SECOND":
+      return new Date(state.getTime() - 1000);
     case "INCREMENT_DAY": {
       return new Date(state.getTime() + 24 * 60 * 60 * 1000);
     }
@@ -45,9 +51,17 @@ const dateReducer = (state: Date, action: Action) => {
 
 const DateContext = createContext<[Date, DateDispatch]>([new Date(), () => {}]);
 
-export const DateContextProvider = ({ children }: { children: React.ReactNode }) => {
+export const DateContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [date, dateDispatch] = useReducer(dateReducer, new Date());
-  return <DateContext.Provider value={[date, dateDispatch]}>{children}</DateContext.Provider>;
+  return (
+    <DateContext.Provider value={[date, dateDispatch]}>
+      {children}
+    </DateContext.Provider>
+  );
 };
 
 export default DateContext;

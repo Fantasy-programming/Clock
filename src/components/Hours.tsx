@@ -1,13 +1,20 @@
-import { useContext } from "react";
-import DateContext from "../global/dateContext";
+import { useEffect, useState } from "react";
 
 const Hours = () => {
-  const [date] = useContext(DateContext);
+  // TODO: Link it to the global state
+  const [date, SetDate] = useState(new Date());
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
   const ampm = hours >= 12 ? "PM" : "AM";
   const hours12 = (hours % 12 || 12).toString().padStart(2, "0");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      SetDate(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="flex gap-5 order-1  justify-center lg:justify-start">

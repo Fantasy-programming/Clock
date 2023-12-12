@@ -7,6 +7,7 @@ export default {
         primary: "hsl(44, 43%, 88%)",
         secondary: "hsl(44, 28%, 82%)",
         tertiary: "hsl(70, 8%, 16%)",
+        dimmed: "hsl(42, 10%, 53%)",
       },
       fontFamily: {
         "barlow-condensed": ["Barlow Condensed", "sans-serif"],
