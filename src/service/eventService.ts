@@ -1,11 +1,12 @@
 // const proxyUrl = "https://cors-anywhere.herokuapp.com";
+
 const baseHolidayUrl = "https://date.nager.at/api/v3/publicholidays";
-const baseEventUrl = "https://today.zenquotes.io/api";
+const baseEventUrl = "day";
 const baseGeoLocationUrl = "https://ipapi.co/json/";
 
 export const getTodayEvents = async (month: number, day: number) => {
   const event = await fetch(`${baseEventUrl}/${month}/${day}`, {
-    mode: "cors",
+    mode: "no-cors",
   });
   return event.json();
 };
