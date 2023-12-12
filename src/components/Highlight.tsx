@@ -16,7 +16,7 @@ function Highlight() {
   }
 
   if (EventData.isError) {
-    return <div className="uppercase">Ooops, things went wrong</div>;
+    return <div className="uppercase order-3 p-4">Ooops, things went wrong</div>;
   }
 
   const event = EventData?.data.data.Events;
