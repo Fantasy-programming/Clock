@@ -19,6 +19,8 @@ function Highlight() {
     return <div className="uppercase order-3 p-4">Ooops, things went wrong</div>;
   }
 
+  console.log(EventData);
+
   const event = EventData?.data.data.Events;
   const randomEvent = event[Math.floor(Math.random() * event.length)];
   const match = randomEvent?.text.match(regex);

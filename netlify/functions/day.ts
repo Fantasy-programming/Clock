@@ -5,9 +5,10 @@ export default async (req: Request, context: Context) => {
   try {
     const event = await fetch(`https://today.zenquotes.io/api/${month}/${day}`);
     const eventJson = await event.json();
-    return new Response(eventJson, { status: 200 });
+    return new Response(JSON.stringify(eventJson));
   } catch (error) {
-    return new Response(error, { status: 500 });
+    console.log(error);
+    return new Response(JSON.stringify(error));
   }
 };
 
