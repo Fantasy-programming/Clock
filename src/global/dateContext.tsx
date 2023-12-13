@@ -51,17 +51,9 @@ const dateReducer = (state: Date, action: Action) => {
 
 const DateContext = createContext<[Date, DateDispatch]>([new Date(), () => {}]);
 
-export const DateContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const DateContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [date, dateDispatch] = useReducer(dateReducer, new Date());
-  return (
-    <DateContext.Provider value={[date, dateDispatch]}>
-      {children}
-    </DateContext.Provider>
-  );
+  return <DateContext.Provider value={[date, dateDispatch]}>{children}</DateContext.Provider>;
 };
 
 export default DateContext;
