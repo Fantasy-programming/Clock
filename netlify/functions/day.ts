@@ -7,7 +7,6 @@ export default async (req: Request, context: Context) => {
     const eventJson = await event.json();
     return new Response(JSON.stringify(eventJson));
   } catch (error) {
-    console.log(error);
     return new Response(JSON.stringify(error));
   }
 };

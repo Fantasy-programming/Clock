@@ -8,7 +8,7 @@ import Birth from "./Birth";
 
 function SideBar() {
   return (
-    <div className="lg:w-[430px] flex flex-col w-full bg-secondary px-8 ">
+    <div className="lg:w-[430px] flex flex-col w-full bg-secondary px-8 rounded-t-[2rem] md:rounded-none shadow-lg ">
       <Socials />
       <Astrology />
       <Hours />

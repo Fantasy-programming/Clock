@@ -6,7 +6,6 @@ const baseGeoLocationUrl = "https://ipapi.co/json/";
 
 export const getTodayEvents = async (month: number, day: number) => {
   const event = await fetch(`${baseEventUrl}/${month}/${day}`);
-  console.log(event);
   return event.json();
 };
 

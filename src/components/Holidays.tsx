@@ -7,7 +7,7 @@ const Holidays = () => {
   const holidayData = useThisYearsHoliday(date.getFullYear());
 
   if (holidayData.isLoading) {
-    return <div>Loading...</div>;
+    return <div className="p-4 text-center order-3">Loading...</div>;
   }
 
   const holiday = holidayData?.data;
