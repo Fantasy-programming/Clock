@@ -14,8 +14,7 @@ const TimePicker = () => {
   const handleClick = (key: string) => {
     const current = getCurrentZeroValueKey();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const actionType =
-      `${key.toUpperCase()}_${current?.toLocaleUpperCase()}` as string;
+    const actionType = `${key.toUpperCase()}_${current?.toLocaleUpperCase()}` as any;
     dateDispatch({ type: actionType });
   };
 
@@ -25,11 +24,7 @@ const TimePicker = () => {
         <button onClick={() => handleClick("Increment")} type="button">
           <Arrow width="20px" height="20px" strokeWidth="10px" />
         </button>
-        <button
-          className="rotate-180"
-          onClick={() => handleClick("Decrement")}
-          type="button"
-        >
+        <button className="rotate-180" onClick={() => handleClick("Decrement")} type="button">
           <Arrow width="20px" height="20px" />
         </button>
       </div>
