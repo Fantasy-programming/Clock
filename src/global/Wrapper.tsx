@@ -1,14 +1,16 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { DateContextProvider } from "./dateContext";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <DateContextProvider>
-        <div className="flex lg:overflow-hidden flex-col lg:flex-row h-full font-barlow-condensed">{children}</div>
-      </DateContextProvider>
-    </QueryClientProvider>
+    <Router>
+      <QueryClientProvider client={queryClient}>
+        <DateContextProvider>{children}</DateContextProvider>
+      </QueryClientProvider>
+    </Router>
   );
 };
 

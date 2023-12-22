@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
 import DateContext from "../global/dateContext";
+
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const getAbbreviatedDayName = (date: Date) => {
   return date.toLocaleString("en-US", { weekday: "short" }).toUpperCase();
@@ -24,7 +25,7 @@ const TimeWheel = () => {
       className="lg:block hidden absolute -rotate-90 right-0 translate-x-5 -translate-y-[8.5rem]"
       ref={parent}
     >
-      <div className=" border-2 border-secondary rotate-[-75deg]  translate-y-[-11rem] translate-x-[-9.6rem] h-80 absolute"></div>
+      <div className=" border-2 border-secondary rotate-[-75deg]  translate-y-[-11rem] translate-x-[-9.6rem] h-80 absolute" />
       <div className=" border-2 border-secondary rotate-[-60deg]  translate-y-[-14rem] translate-x-[-8.2rem] h-80 absolute">
         <div className="absolute rotate-90 left-0 -translate-y-8 -translate-x-2">
           <span className="font-semibold">{daysToShow[0]}</span>

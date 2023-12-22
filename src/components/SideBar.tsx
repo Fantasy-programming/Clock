@@ -12,11 +12,11 @@ function SideBar() {
       <Socials />
       <Astrology />
       <Hours />
-      <InfoHeader text="holiday" />
+      <InfoHeader text="Holiday" />
       <Holidays />
-      <InfoHeader text="Today | They were born today" />
+      <InfoHeader text="They were born today" />
       <Birth />
-      <InfoHeader text="this day in history" />
+      <InfoHeader text="This day in history" />
       <Highlight />
     </div>
   );

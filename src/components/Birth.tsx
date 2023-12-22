@@ -1,7 +1,8 @@
-import { useTodayEvents } from "../hooks/useEvents";
 import { useContext } from "react";
-import { getRandomObjects } from "../utils/func";
-import DateContext from "../global/dateContext";
+import DateContext from "@/global/dateContext";
+
+import { useTodayEvents } from "@/hooks/useEvents";
+import { getRandomObjects } from "@/utils/func";
 
 const regex = /(\d+)\D+(.*?);(.*)/;
 
@@ -16,7 +17,15 @@ const Birth = () => {
   }
 
   if (EventData.isError) {
-    return <div className="uppercase order-3 p-4">Ooops, things went wrong</div>;
+    return (
+      <div className="uppercase order-3 p-4">Ooops, things went wrong</div>
+    );
+  }
+
+  if (!EventData.data.data) {
+    return (
+      <div className="uppercase order-3 p-4">Ooops, things went wrong</div>
+    );
   }
 
   const births = EventData?.data.data.Births;

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Hours = () => {
-  // TODO: Link it to the global state
-  const [date, SetDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
@@ -11,7 +10,7 @@ const Hours = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      SetDate(new Date());
+      setDate(new Date());
     }, 1000);
     return () => clearInterval(interval);
   }, []);

@@ -1,9 +1,10 @@
 import { useContext } from "react";
+import DateContext from "../global/dateContext";
+
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import useSwitch from "../hooks/useSwitch";
 
 import Arrow from "../assets/arrow-up.svg?react";
-import useSwitch from "../hooks/useSwitch";
-import DateContext from "../global/dateContext";
 
 const TimePicker = () => {
   const [date, dateDispatch] = useContext(DateContext);
@@ -13,17 +14,22 @@ const TimePicker = () => {
   const handleClick = (key: string) => {
     const current = getCurrentZeroValueKey();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const actionType = `${key.toUpperCase()}_${current?.toLocaleUpperCase()}` as any;
+    const actionType =
+      `${key.toUpperCase()}_${current?.toLocaleUpperCase()}` as string;
     dateDispatch({ type: actionType });
   };
 
   return (
     <div className="flex-col-reverse flex lg:flex-row lg:gap-10 gap-5">
       <div className="flex flex-row lg:flex-col justify-center gap-6">
-        <button onClick={() => handleClick("Increment")}>
+        <button onClick={() => handleClick("Increment")} type="button">
           <Arrow width="20px" height="20px" strokeWidth="10px" />
         </button>
-        <button className="rotate-180" onClick={() => handleClick("Decrement")}>
+        <button
+          className="rotate-180"
+          onClick={() => handleClick("Decrement")}
+          type="button"
+        >
           <Arrow width="20px" height="20px" />
         </button>
       </div>

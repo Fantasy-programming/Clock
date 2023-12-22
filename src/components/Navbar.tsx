@@ -1,9 +1,14 @@
-import Stars from "../assets/stars.svg?react";
-import Star from "../assets/star.svg?react";
-import Burger from "../assets/burger.svg?react";
-import Search from "../assets/search.svg?react";
+import { confettiBurger } from "@/utils/confetti";
+
+import Stars from "@/assets/stars.svg?react";
+import Star from "@/assets/star.svg?react";
+import Burger from "@/assets/burger.svg?react";
 
 const Navbar = () => {
+  const surprise = () => {
+    confettiBurger();
+  };
+
   return (
     <div className="lg:py-14 py-8 pb-4 lg:px-14 px-8 flex justify-between lg:justify-normal lg:gap-28 gap-12">
       <div>
@@ -15,6 +20,12 @@ const Navbar = () => {
             <li>
               <a className="focus:underline hover:underline underline-offset-4 decoration-wavy" href="/">
                 home
+              </a>
+            </li>
+            <li>.</li>
+            <li>
+              <a className="focus:underline hover:underline underline-offset-4 decoration-wavy" href="/pomo">
+                pomodoro
               </a>
             </li>
             <li>.</li>
@@ -36,11 +47,12 @@ const Navbar = () => {
         </div>
         <div>
           <div className="flex pt-4 lg:pt-1 gap-8">
-            <Burger width="20px" height="20px" />
+            <button onClick={() => surprise()} type="button">
+              <Burger width="20px" height="20px" className="fill-tertiary" />
+            </button>
             <a href="https://github.com/Fantasy-programming/Clock">
-              <Star width="20px" height="20px" />
+              <Star width="20px" height="20px" className="fill-tertiary" />
             </a>
-            <Search width="20px" height="20px" />
           </div>
         </div>
       </nav>

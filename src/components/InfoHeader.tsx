@@ -1,4 +1,4 @@
-function InfoHeader({ text }: { text: string }) {
+function InfoHeader({ text }: Readonly<{ text: string }>) {
   return (
     <div className=" text-xl uppercase order-3 border-b-2 border-b-tertiary py-2 ">
       {text}

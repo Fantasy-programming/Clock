@@ -1,5 +1,3 @@
-// const proxyUrl = "https://cors-anywhere.herokuapp.com";
-
 const baseHolidayUrl = "https://date.nager.at/api/v3/publicholidays";
 const baseEventUrl = "day";
 const baseGeoLocationUrl = "https://ipapi.co/json/";

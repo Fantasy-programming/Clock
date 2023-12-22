@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import Aquarius from "../assets/aquarius.svg?react";
-import Virgo from "../assets/virgo.svg?react";
-import Taurus from "../assets/taurus.svg?react";
-import Leo from "../assets/leo.svg?react";
-import Cancer from "../assets/cancer.svg?react";
-import Gemini from "../assets/gemini.svg?react";
-import Libra from "../assets/balance.svg?react";
-import Capricorn from "../assets/capricorn.svg?react";
-import Sagittarius from "../assets/sagittarius.svg?react";
+
+import Aquarius from "@/assets/aquarius.svg?react";
+import Virgo from "@/assets/virgo.svg?react";
+import Taurus from "@/assets/taurus.svg?react";
+import Leo from "@/assets/leo.svg?react";
+import Cancer from "@/assets/cancer.svg?react";
+import Gemini from "@/assets/gemini.svg?react";
+import Libra from "@/assets/balance.svg?react";
+import Capricorn from "@/assets/capricorn.svg?react";
+import Sagittarius from "@/assets/sagittarius.svg?react";
 
 type ZodiacSign =
   | "Capricorn"
@@ -82,7 +83,10 @@ const useAstro = (dateObj: Date) => {
         const { month: signMonth, day: signDay } = zodiacData[sign];
         const { month: nextMonth, day: nextDay } = zodiacData[nextSign];
 
-        if ((month === signMonth - 1 && day >= signDay) || (month === nextMonth - 1 && day < nextDay)) {
+        if (
+          (month === signMonth - 1 && day >= signDay) ||
+          (month === nextMonth - 1 && day < nextDay)
+        ) {
           return sign;
         }
       }

@@ -18,8 +18,10 @@ This is a clock like all the one you can see on github, with the particularity o
 - Move between dates as you see fit
 - Shows Holidays related to the selected day
 - Shows famous birth and event related to the day
+- Pomodoro (of course)
 
 ### Tech
 
-- React (Tanstack Query + Autoanimate)
+- React
+  - Tanstack Query + Autoanimate + React-router
 - Netlify functions

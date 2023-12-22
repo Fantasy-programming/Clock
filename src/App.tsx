@@ -1,18 +1,21 @@
-import AppWrapper from "./global/Wrapper";
+import { Routes, Route } from "react-router-dom";
 
-import SideBar from "./components/SideBar";
-import Timecadrant from "./components/TimeCadrant";
+import AppWrapper from "./global/Wrapper";
+import Home from "./Pages/Home";
+import About from "./Pages/About";
+import Pomo from "./Pages/Pomo";
 
 import "./App.css";
 
 function App() {
   return (
-    <>
-      <AppWrapper>
-        <Timecadrant />
-        <SideBar />
-      </AppWrapper>
-    </>
+    <AppWrapper>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/pomo" element={<Pomo />} />
+      </Routes>
+    </AppWrapper>
   );
 }
 
