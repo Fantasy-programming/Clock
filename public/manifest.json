@@ -1,0 +1,15 @@
+{
+  "short_name": "Clockworks",
+  "name": "Clockwork - A simple clock and pomodoro timer",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#eee7d3",
+  "background_color": "#eee7d3"
+}

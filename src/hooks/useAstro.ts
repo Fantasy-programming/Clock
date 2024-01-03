@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 
-import Aquarius from "@/assets/aquarius.svg?react";
-import Virgo from "@/assets/virgo.svg?react";
+import Aries from "@/assets/aries.svg?react";
 import Taurus from "@/assets/taurus.svg?react";
-import Leo from "@/assets/leo.svg?react";
-import Cancer from "@/assets/cancer.svg?react";
 import Gemini from "@/assets/gemini.svg?react";
+import Cancer from "@/assets/cancer.svg?react";
+import Leo from "@/assets/leo.svg?react";
+import Virgo from "@/assets/virgo.svg?react";
 import Libra from "@/assets/balance.svg?react";
-import Capricorn from "@/assets/capricorn.svg?react";
+import Scorpio from "@/assets/scorpio.svg?react";
 import Sagittarius from "@/assets/sagittarius.svg?react";
+import Capricorn from "@/assets/capricorn.svg?react";
+import Aquarius from "@/assets/aquarius.svg?react";
+import Pisces from "@/assets/pisces.svg?react";
 
 type ZodiacSign =
   | "Capricorn"
@@ -39,9 +42,9 @@ type SignsIcon = {
 
 const signsIcon: SignsIcon = {
   Aquarius: Aquarius,
-  Scorpio: Aquarius,
-  Pisces: Aquarius,
-  Aries: Aquarius,
+  Scorpio: Scorpio,
+  Pisces: Pisces,
+  Aries: Aries,
   Virgo: Virgo,
   Taurus: Taurus,
   Libra: Libra,

@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import { confettiBurger } from "@/utils/confetti";
 
 import Stars from "@/assets/stars.svg?react";
 import Star from "@/assets/star.svg?react";
 import Burger from "@/assets/burger.svg?react";
+import Pomodoro from "@/assets/pomo.svg?react";
 
 const Navbar = () => {
   const surprise = () => {
@@ -11,28 +13,37 @@ const Navbar = () => {
 
   return (
     <div className="lg:py-14 py-8 pb-4 lg:px-14 px-8 flex justify-between lg:justify-normal lg:gap-28 gap-12">
-      <div>
+      <Link to="/">
         <Stars width="100px" height="100px" />
-      </div>
+      </Link>
       <nav className="flex gap-28">
         <div className="pt-1 lg:block hidden">
           <ul className="flex gap-5 uppercase font-semibold">
             <li>
-              <a className="focus:underline hover:underline underline-offset-4 decoration-wavy" href="/">
+              <Link
+                className="focus:underline hover:underline underline-offset-4 decoration-wavy"
+                to="/"
+              >
                 home
-              </a>
+              </Link>
             </li>
             <li>.</li>
             <li>
-              <a className="focus:underline hover:underline underline-offset-4 decoration-wavy" href="/pomo">
+              <Link
+                className="focus:underline hover:underline underline-offset-4 decoration-wavy"
+                to="/pomo"
+              >
                 pomodoro
-              </a>
+              </Link>
             </li>
             <li>.</li>
             <li>
-              <a className="focus:underline hover:underline underline-offset-4 decoration-wavy" href="/about">
+              <Link
+                className="focus:underline hover:underline underline-offset-4 decoration-wavy"
+                to="/about"
+              >
                 about
-              </a>
+              </Link>
             </li>
             <li>.</li>
             <li>
@@ -50,6 +61,9 @@ const Navbar = () => {
             <button onClick={() => surprise()} type="button">
               <Burger width="20px" height="20px" className="fill-tertiary" />
             </button>
+            <Link to="/pomo" className="lg:hidden block">
+              <Pomodoro width="20px" height="20px" className="fill-tertiary" />
+            </Link>
             <a href="https://github.com/Fantasy-programming/Clock">
               <Star width="20px" height="20px" className="fill-tertiary" />
             </a>
