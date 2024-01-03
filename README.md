@@ -2,7 +2,7 @@
 <br>
 <br>
 <h1> YAC - CLOCK </h1>
-<a href="https://monumental-jelly-4b9be5.netlify.app/">
+<a href="https://fantasyclockworks.netlify.app/">
 <img src="src/design/design.jpg"  height="300">
 </a>
 <br>
