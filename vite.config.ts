@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
+import viteCompression from "vite-plugin-compression";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
@@ -17,5 +18,6 @@ export default defineConfig({
         replaceAttrValues: { "#000000": "inherit" },
       },
     }),
+    viteCompression(),
   ],
 });

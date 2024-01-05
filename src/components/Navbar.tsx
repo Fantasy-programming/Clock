@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="lg:py-14 py-8 pb-4 lg:px-14 px-8 flex justify-between lg:justify-normal lg:gap-28 gap-12">
-      <Link to="/">
+      <Link to="/" aria-label="go to home page">
         <Stars width="100px" height="100px" />
       </Link>
       <nav className="flex gap-28">
@@ -23,6 +23,7 @@ const Navbar = () => {
               <Link
                 className="focus:underline hover:underline underline-offset-4 decoration-wavy"
                 to="/"
+                aria-label="go to home page"
               >
                 home
               </Link>
@@ -32,6 +33,7 @@ const Navbar = () => {
               <Link
                 className="focus:underline hover:underline underline-offset-4 decoration-wavy"
                 to="/pomo"
+                aria-label="go to pomodoro page"
               >
                 pomodoro
               </Link>
@@ -41,6 +43,7 @@ const Navbar = () => {
               <Link
                 className="focus:underline hover:underline underline-offset-4 decoration-wavy"
                 to="/about"
+                aria-label="go to about page"
               >
                 about
               </Link>
@@ -50,6 +53,7 @@ const Navbar = () => {
               <a
                 className="focus:underline hover:underline underline-offset-4 decoration-wavy"
                 href="https://www.instagram.com/studio20.my/"
+                aria-label="go to studio20 instagram page"
               >
                 credit
               </a>
@@ -58,13 +62,24 @@ const Navbar = () => {
         </div>
         <div>
           <div className="flex pt-4 lg:pt-1 gap-8">
-            <button onClick={() => surprise()} type="button">
+            <button
+              onClick={() => surprise()}
+              type="button"
+              aria-label="start confetti animation"
+            >
               <Burger width="20px" height="20px" className="fill-tertiary" />
             </button>
-            <Link to="/pomo" className="lg:hidden block">
+            <Link
+              to="/pomo"
+              className="lg:hidden block"
+              aria-label="go to pomodoro page"
+            >
               <Pomodoro width="20px" height="20px" className="fill-tertiary" />
             </Link>
-            <a href="https://github.com/Fantasy-programming/Clock">
+            <a
+              href="https://github.com/Fantasy-programming/Clock"
+              aria-label="see the github repo"
+            >
               <Star width="20px" height="20px" className="fill-tertiary" />
             </a>
           </div>

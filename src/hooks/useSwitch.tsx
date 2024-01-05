@@ -90,7 +90,7 @@ const useSwitch = (date: Date) => {
               className="absolute bottom-2 right-0 text-4xl underline underline-offset-4 hover:no-underline focus:no-underline  font-medium"
               onClick={() => handleClick(key)}
               key={key}
-              aria-label={`Switch to ${key}`}
+              aria-label={`Change ${key} ${map[key]} to another value `}
             >
               {map[key]}
             </button>
@@ -112,7 +112,7 @@ const useSwitch = (date: Date) => {
               className="absolute underline underline-offset-4 hover:no-underline focus:no-underline top-8 left-8 text-2xl font-medium"
               onClick={() => handleClick(key)}
               key={key}
-              aria-label={`Switch to ${key}`}
+              aria-label={`Change ${key} ${map[key]} to another value `}
             >
               {map[key]}
             </button>
