@@ -19,6 +19,7 @@ This is a clock like all the one you can see on github, with the particularity o
 - Shows Holidays related to the selected day
 - Shows famous birth and event related to the day
 - Pomodoro (of course)
+- DateTime calculator (with natural dates)
 
 ### Tech
 
